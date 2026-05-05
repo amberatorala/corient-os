@@ -1,91 +1,50 @@
-# Corient OS — Per-Client Cloning Guide
+# Corient OS — Internal SOP
 
-The single-page HTML at `corient-os.html` is the strategic Corient OS document. One file, every section. Cloning it for a client is two attribute changes and (optionally) some copy edits.
+This is the internal reference document for the Corient delivery team. It maps lanes to phases so anyone on the team can look up:
 
-## Quick start
+- What activates in each phase
+- Who owns each lane
+- Which task pack runs
+- Which tools are live, and what to add when
+- The gates that move a client from one phase to the next
+- Retainer pricing per phase
 
-1. Duplicate `corient-os.html` into a per-client folder (e.g. `clients/acme/corient-os.html`).
-2. Open the file. Find the `<body>` tag near the top:
+## What it is not
 
-```html
-<body data-stage="foundation" data-view="team" data-client="Client Name">
-```
+- **Not a sales document.** Don't send it to prospects. Pricing, gates, and tool specifics are commercially sensitive.
+- **Not a client-facing page.** This is for Corient operators only.
+- **Not deployed publicly.** Lives as a local HTML file or inside the team workspace (Notion, Drive, Slack).
 
-3. Set the three attributes:
+## File
 
-| Attribute | Values | What it controls |
-|---|---|---|
-| `data-stage` | `foundation` \| `base` \| `expansion` | Which phase block glows + which sequence dots are lit. Dim other phases to 55% so the active one stands out. |
-| `data-view` | `team` \| `client` | Tightens or relaxes copy density. Team view shows tool-cost rows, optional tools, deeper task pack detail. Client view hides them. |
-| `data-client` | Free text | The client name shown in the topbar chip. |
+`corient-os.html` — single self-contained HTML. Open in any browser. Fonts load from Google CDN, the logo loads from corient.com.au CDN, so it works anywhere with internet access.
 
-4. Save. Open in any browser. That's it.
+## How to read it
 
-## What changes between team and client views
+The whole document is a single table plus three small reference blocks. Top to bottom:
 
-| Element | `data-view="team"` | `data-view="client"` |
-|---|---|---|
-| Phase tools — optional adds (Hotjar, Mutiny, GHL pipeline detail) | Visible | Hidden |
-| Stack cost-per-phase strip ($0–50, $650, $500) | Visible | Hidden |
-| Reasoning rationale on tool gap calls | Visible | Hidden |
+1. **Summary reference** — phases, lanes, the three Notion OS layers, key notes.
+2. **The matrix** — 9 lane rows × 3 phase columns. Each cell shows status, deliverable, and tools active in that phase.
+3. **Phase gates** — concrete criteria to advance Foundation → Base → Expansion.
+4. **Retainer pricing** — Foundation $6,000/mo · Base $8,000/mo · Expansion $12,000/mo.
 
-To add more team-only or client-only elements, use the existing CSS classes:
+Read down a column to see everything happening in one phase. Read across a row to see one lane's progression across all phases.
 
-```html
-<span class="team-only">Team-only detail.</span>
-<span class="client-only">Client-only framing.</span>
-```
+## Updating
 
-## Copy edits
+Edit the HTML directly at `/Users/amberburch/.claude/results/corient/corient-os/corient-os.html`. Common updates:
 
-The default copy is the conviction draft. Per-client edits live in the HTML directly — find and replace, or open in any editor:
+- **Lane status changes per client** — rare, since the matrix shows the standard progression. For a client-specific overlay, copy the file and tweak.
+- **Tool stack changes** — when a new tool gets added or removed from Corient's standard stack, update the relevant cell.
+- **Pricing changes** — update the retainer cells.
+- **Gate criteria changes** — update the gate column lists.
 
-- **Hero subtitle** — usually unchanged.
-- **Phase posture sentences** — sometimes tweaked per client (e.g. e-commerce vs SaaS).
-- **Lane outcomes inside phase blocks** — the place to swap defaults if the client's path deviates.
-- **KPIs and gates** — refine numbers if the client has clearer baselines.
-- **Photoreal AI section** — swap in client-specific cost savings if comparison data exists.
-- **Offer library** — usually unchanged (it's the menu, not the chosen offer).
+## Distribution
 
-## Brand assets
+- Drop a copy in the Corient team Notion workspace alongside the rest of the OS docs
+- Share the file via Drive or Slack when a team member needs it offline
+- Print-friendly: A3 landscape renders the full matrix on one page (`@page` rules already configured)
 
-The hero topbar and footer reference the Corient white wordmark via CDN:
-`https://www.corient.com.au/wp-content/uploads/2025/08/white-logo-1-1.webp`
+## History
 
-For offline reliability, save the four brand-kit logo variants locally to `/Users/amberburch/.claude/reference/clients/corient/brand/` and update the `<img>` tags. The four variants are:
-
-- Mark only on black (white mark)
-- Mark only on light (black mark)
-- Wordmark on light (black "corient" with mark)
-- Wordmark on dark with ultramarine ambient glow ← used in hero topbar
-
-## Verifying
-
-After cloning, scroll the document end-to-end and check:
-
-1. The active phase glows; the other two are dimmed to ~55%.
-2. The sequence rail at the top of the timeline section fills to the right level (33%, 66%, 100%).
-3. The stage chip in the topbar shows the right phase.
-4. The client name appears in the topbar chip.
-5. Resize the window to mobile width — the matrix collapses, the orb scales, copy stays readable.
-6. Read every line aloud. Anything that sounds like AI filler, kill it.
-
-## When something feels wrong
-
-The doc fails the "stranger test" if a reader can't answer these in 3 minutes:
-
-- What phase is the client in?
-- What lanes are active?
-- What tools come next?
-- Why 3+ months minimum?
-- What does Corient explicitly *not* do?
-
-If any answer is unclear, the section needs sharpening.
-
-## Voice rules
-
-- Direct.
-- No corporate filler.
-- No em-dashes.
-- Australian English throughout.
-- Read aloud before shipping.
+The previous version of this file was a client-facing sales document deployed at `amberatorala.github.io/corient-os` (now private, Pages disabled). Goal pivoted on 2026-05-05 to internal SOP. The local git history at `~/Claude/Projects/corient-os/.git` retains the deployed sales version at commit `06e07da` if rollback is ever needed.
