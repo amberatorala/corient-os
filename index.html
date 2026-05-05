@@ -201,6 +201,10 @@
     border: 1px dashed rgba(50, 95, 235, 0.40);
   }
   .phase-cell .tool--add::before { content: '+ '; color: var(--ultramarine); }
+  .phase-cell .cell-note {
+    margin-top: 6px; font-size: 11px; color: var(--light);
+    letter-spacing: 0.04em; line-height: 1.4;
+  }
 
   /* GATES */
   .gates {
@@ -232,6 +236,9 @@
     border: 1px solid var(--hairline);
     border-radius: 4px;
     background: var(--surface);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .retainer-head {
     display: flex; align-items: baseline; justify-content: space-between;
     gap: 16px;
   }
@@ -252,6 +259,11 @@
   .retainer-price span {
     font-size: 12px; color: var(--muted); font-weight: 400;
     margin-left: 2px;
+  }
+  .retainer-coverage {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline);
   }
 
   /* FOOTER */
@@ -336,6 +348,7 @@
         <li><strong>Foundation</strong> <span class="dim">· Months 0&ndash;3</span></li>
         <li><strong>Base</strong> <span class="dim">· Months 3&ndash;6</span></li>
         <li><strong>Expansion</strong> <span class="dim">· Months 6&ndash;12</span></li>
+        <li class="dim" style="margin-top: 6px; font-size: 11px;">Sequence is non-negotiable.</li>
       </ul>
     </div>
     <div>
@@ -344,6 +357,7 @@
         <li>Onboarding · Brand · Website</li>
         <li>Production · Content · Lifecycle</li>
         <li>Outreach · SEO · Paid</li>
+        <li class="dim" style="margin-top: 6px; font-size: 11px;">Each lane carries owner, task pack, tools.</li>
       </ul>
     </div>
     <div>
@@ -352,14 +366,16 @@
         <li><strong>Client OS</strong> <span class="dim">· where work lives</span></li>
         <li><strong>Brief OS</strong> <span class="dim">· living brief</span></li>
         <li><strong>Report OS</strong> <span class="dim">· lane health + metrics</span></li>
+        <li class="dim" style="margin-top: 6px; font-size: 11px;">Stands up at onboarding. Dreamdata layers in at Base.</li>
       </ul>
     </div>
     <div>
-      <div class="summary-label">Notes</div>
+      <div class="summary-label">Status legend</div>
       <ul class="summary-list">
-        <li><span class="dim">Substrate stands up at onboarding.</span></li>
-        <li><span class="dim">Dreamdata layers in at Base.</span></li>
-        <li><span class="dim">Sequence is non-negotiable.</span></li>
+        <li><strong>Active</strong> <span class="dim">· building or running</span></li>
+        <li><strong>Maintain</strong> <span class="dim">· keep it running</span></li>
+        <li><strong>One-time</strong> <span class="dim">· done in earlier phase</span></li>
+        <li><strong>Not active</strong> <span class="dim">· activates later</span></li>
       </ul>
     </div>
   </div>
@@ -469,11 +485,9 @@
             <span class="status status--active">Active</span>
             <div class="deliverable">First photoreal asset library shipped.</div>
             <div class="tools">
-              <span class="tool">Fal</span>
-              <span class="tool">Runway</span>
-              <span class="tool">Flux</span>
-              <span class="tool">Higgsfield</span>
+              <span class="tool">Photoreal AI</span>
             </div>
+            <div class="cell-note">Fal &middot; Runway &middot; Flux &middot; Higgsfield</div>
           </td>
           <td class="phase-cell">
             <span class="status status--active">Active</span>
@@ -659,6 +673,7 @@
 <section>
   <span class="section-label">Phase gates</span>
   <h2 class="section-title">Advance only when these are true.</h2>
+  <p class="section-sub">Reviewed in the monthly performance call. Signed off by Account Manager + Strategist before the client moves phases.</p>
 
   <div class="gates">
     <div class="gate-col">
@@ -704,25 +719,34 @@
 
   <div class="retainer">
     <div class="retainer-cell">
-      <div>
-        <span class="retainer-name">Foundation</span>
-        <span class="retainer-window">Months 0&ndash;3</span>
+      <div class="retainer-head">
+        <div>
+          <span class="retainer-name">Foundation</span>
+          <span class="retainer-window">Months 0&ndash;3</span>
+        </div>
+        <div class="retainer-price">$6,000<span>/mo</span></div>
       </div>
-      <div class="retainer-price">$6,000<span>/mo</span></div>
+      <div class="retainer-coverage">8 lanes building. Onboarding sets up substrate. Brand, Website, Production, Content, Lifecycle, SEO, Paid go live.</div>
     </div>
     <div class="retainer-cell">
-      <div>
-        <span class="retainer-name">Base</span>
-        <span class="retainer-window">Months 3&ndash;6</span>
+      <div class="retainer-head">
+        <div>
+          <span class="retainer-name">Base</span>
+          <span class="retainer-window">Months 3&ndash;6</span>
+        </div>
+        <div class="retainer-price">$8,000<span>/mo</span></div>
       </div>
-      <div class="retainer-price">$8,000<span>/mo</span></div>
+      <div class="retainer-coverage">Outreach activates. LinkedIn joins paid. Clay enriches outreach. Dreamdata wires attribution.</div>
     </div>
     <div class="retainer-cell">
-      <div>
-        <span class="retainer-name">Expansion</span>
-        <span class="retainer-window">Months 6&ndash;12</span>
+      <div class="retainer-head">
+        <div>
+          <span class="retainer-name">Expansion</span>
+          <span class="retainer-window">Months 6&ndash;12</span>
+        </div>
+        <div class="retainer-price">$12,000<span>/mo</span></div>
       </div>
-      <div class="retainer-price">$12,000<span>/mo</span></div>
+      <div class="retainer-coverage">Multi-channel paid (Pinterest, YouTube, TikTok). Gong, Smartlead, Ahrefs, StoryChief layer in.</div>
     </div>
   </div>
 </section>
