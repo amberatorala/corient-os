@@ -1,67 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corient OS · Internal SOP</title>
-<meta name="description" content="Internal SOP. Lane and phase reference for the Corient delivery team.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<title>Corient OS · Servicing System</title>
+<meta name="description" content="The Corient servicing operating system. Lane, phase, scope, tooling, retainer, add-ons. Used by the delivery team and walked through with clients by account managers.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
 <style>
   :root {
+    /* brand */
     --ultramarine: #325FEB;
     --blueberry: #508FFF;
-    --gainsboro: #DDDFDE;
-    --white: #FFFFFF;
-    --black: #071116;
+    --ultramarine-soft: rgba(50, 95, 235, 0.08);
+    --ultramarine-line: rgba(50, 95, 235, 0.22);
 
-    --canvas: var(--black);
-    --surface: #0C1620;
-    --surface-alt: #0A131C;
-    --muted: #8A9BB0;
-    --light: #5E7085;
-    --hairline: rgba(221, 223, 222, 0.06);
-    --hairline-strong: rgba(221, 223, 222, 0.10);
+    /* surfaces */
+    --canvas: #F2F3F2;
+    --surface: #FFFFFF;
+    --surface-alt: #FAFAFA;
+    --surface-deep: #ECEDEC;
+    --hairline: rgba(7, 17, 22, 0.08);
+    --hairline-strong: rgba(7, 17, 22, 0.14);
 
-    --sans: 'Gotham', 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    /* type */
+    --ink: #071116;
+    --ink-mid: #2A3540;
+    --muted: #54627A;
+    --light: #6B7A8F;
+
+    --sans: 'Switzer', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'SF Mono', ui-monospace, 'Cascadia Mono', Menlo, monospace;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; scroll-padding-top: 80px; }
 
   body {
     font-family: var(--sans);
     font-weight: 400;
     font-size: 14px;
     line-height: 1.55;
-    color: var(--gainsboro);
+    color: var(--ink-mid);
     background: var(--canvas);
   }
 
-  a { color: var(--blueberry); text-decoration: none; }
-  a:hover { color: var(--white); }
-
-  .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 32px;
+  a { color: var(--ultramarine); text-decoration: none; }
+  a:hover { color: var(--ink); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--ultramarine);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: 8px; top: 8px;
+    padding: 10px 14px; background: var(--ink); color: var(--surface);
+    border-radius: 4px; font-size: 13px; font-weight: 500;
+    transform: translateY(-200%); transition: transform 0.15s;
+    z-index: 100;
+  }
+  .skip-link:focus { transform: translateY(0); color: var(--surface); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .skip-link { transition: none; }
+  }
+
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
 
   /* HEADER */
   .header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 32px;
+    padding: 18px 32px;
     border-bottom: 1px solid var(--hairline);
-    background: rgba(7, 17, 22, 0.85);
+    background: rgba(242, 243, 242, 0.92);
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    gap: 24px;
   }
-  .header-logo img { height: 22px; width: auto; }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .logo {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: var(--ink); text-decoration: none;
+  }
+  .logo img { height: 26px; width: auto; display: block; }
+  .logo-suffix {
+    color: var(--light); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding-left: 12px; border-left: 1px solid var(--hairline-strong);
+  }
+
+  .nav { display: flex; gap: 2px; flex-wrap: wrap; }
+  .nav a {
+    display: inline-block;
+    padding: 9px 11px;
+    font-size: 12px; color: var(--muted); font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+  }
+  .nav a:hover { color: var(--ink); background: var(--surface); }
   .header-meta {
     font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--muted); font-weight: 500;
@@ -69,60 +112,172 @@
   .header-meta .accent { color: var(--ultramarine); }
 
   /* SECTION */
-  section { padding: 48px 0; }
+  section { padding: 64px 0; border-bottom: 1px solid var(--hairline); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 28px; max-width: 760px; }
   .section-label {
     font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--ultramarine); font-weight: 600;
-    margin-bottom: 12px; display: block;
+    margin-bottom: 10px; display: block;
   }
   .section-title {
-    font-family: var(--sans); font-size: 22px; font-weight: 600;
-    letter-spacing: -0.02em; color: var(--white); margin-bottom: 8px;
+    font-family: var(--sans); font-size: 24px; font-weight: 600;
+    letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px;
   }
-  .section-sub {
-    font-size: 13px; color: var(--muted); max-width: 760px;
-    margin-bottom: 28px;
-  }
+  .section-sub { font-size: 14px; color: var(--muted); }
 
-  /* SUMMARY REFERENCE */
-  .summary {
+  /* HERO */
+  .hero { padding: 64px 0 48px; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600;
+    margin-bottom: 16px; display: block;
+  }
+  .hero-title {
+    font-size: 40px; font-weight: 600; letter-spacing: -0.025em;
+    color: var(--ink); line-height: 1.1; max-width: 760px;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+  .hero-sub { font-size: 16px; color: var(--muted); max-width: 720px; line-height: 1.55; }
+
+  .audience {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    margin-top: 36px;
+  }
+  .audience-card {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 6px; padding: 22px 24px;
+  }
+  .audience-card .role {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600; margin-bottom: 8px;
+  }
+  .audience-card h3 {
+    font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .audience-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* ONBOARDING TIMELINE */
+  .timeline-wrap { overflow-x: auto; padding-bottom: 4px; }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(220px, 1fr));
+    gap: 12px;
+    min-width: 1080px;
+    position: relative;
+  }
+  .timeline::before {
+    content: ''; position: absolute; top: 30px;
+    left: 24px; right: 24px; height: 1px;
+    background: var(--hairline-strong); z-index: 0;
+  }
+  .timeline-step {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 6px; padding: 20px;
+    position: relative; z-index: 1;
+  }
+  .timeline-marker {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 100px;
+    background: var(--ultramarine); color: var(--surface);
+    font-size: 10px; font-weight: 700; letter-spacing: 0;
+    margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-week {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .timeline-meta { display: flex; flex-direction: column; gap: 8px; }
+  .timeline-meta .row { display: flex; flex-direction: column; gap: 2px; }
+  .timeline-meta .label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--light); font-weight: 600;
+  }
+  .timeline-meta .value { font-size: 12px; color: var(--ink-mid); line-height: 1.4; }
+
+  .onboarding-callout {
+    margin-top: 28px;
+    background: var(--ultramarine-soft);
+    border: 1px solid var(--ultramarine-line);
+    border-radius: 6px;
+    padding: 16px 20px;
+    font-size: 13px; color: var(--ink); line-height: 1.55;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .onboarding-callout strong { color: var(--ultramarine); font-weight: 600; }
+
+  /* UNIFIED SYSTEM FUNNEL */
+  .funnel {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    padding: 28px 0;
-  }
-  .summary-label {
-    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--light); font-weight: 600; margin-bottom: 10px;
-  }
-  .summary-list {
-    list-style: none; display: flex; flex-direction: column; gap: 6px;
-  }
-  .summary-list li {
-    font-size: 13px; color: var(--gainsboro); line-height: 1.5;
-  }
-  .summary-list li strong { color: var(--white); font-weight: 500; }
-  .summary-list li .dim { color: var(--muted); }
-
-  /* MATRIX TABLE */
-  .matrix-wrap { overflow-x: auto; }
-  .matrix {
-    width: 100%;
-    border-collapse: collapse;
+    background: var(--surface);
     border: 1px solid var(--hairline);
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
   }
-  .matrix thead th {
-    position: sticky; top: 64px; z-index: 10;
+  .funnel-stage {
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    border-right: 1px solid var(--hairline);
+    border-top: 3px solid rgba(50, 95, 235, 0.25);
+    position: relative;
     background: var(--surface);
-    color: var(--white);
-    font-family: var(--sans); font-weight: 600; font-size: 11px;
+  }
+  .funnel-stage:nth-child(1) { border-top-color: rgba(50, 95, 235, 0.25); }
+  .funnel-stage:nth-child(2) { border-top-color: rgba(50, 95, 235, 0.45); }
+  .funnel-stage:nth-child(3) { border-top-color: rgba(50, 95, 235, 0.70); }
+  .funnel-stage:nth-child(4) { border-top-color: var(--ultramarine); }
+  .funnel-stage:last-child { border-right: none; }
+  .funnel-stage-number {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--light); font-weight: 600;
+  }
+  .funnel-stage-name {
+    font-size: 20px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.02em; margin-top: -4px;
+  }
+  .funnel-stage-sub {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+  .funnel-lanes-list {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-top: 4px;
+  }
+  .funnel-lane {
+    display: inline-block; padding: 4px 10px; border-radius: 4px;
+    background: var(--canvas); color: var(--ink-mid);
+    border: 1px solid var(--hairline-strong);
+    font-size: 12px; font-weight: 500;
+  }
+  .funnel-output {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline-strong);
+    font-size: 12px; color: var(--ink-mid); line-height: 1.5;
+  }
+  .funnel-output strong {
+    color: var(--light); font-weight: 600;
+    display: block; font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+
+  /* MATRIX */
+  .matrix-wrap { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 6px; background: var(--surface); }
+  .matrix { width: 100%; border-collapse: collapse; min-width: 980px; }
+  .matrix thead th {
+    background: var(--surface-deep);
+    color: var(--ink);
+    font-weight: 600; font-size: 11px;
     letter-spacing: 0.14em; text-transform: uppercase;
     text-align: left;
-    padding: 14px 16px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--hairline-strong);
   }
   .matrix thead th.lane-col { width: 22%; }
@@ -133,268 +288,575 @@
     letter-spacing: 0.12em;
     font-variant-numeric: tabular-nums;
   }
-  .matrix tbody tr {
-    border-bottom: 1px solid var(--hairline);
-  }
+  .matrix tbody tr { border-bottom: 1px solid var(--hairline); }
   .matrix tbody tr:last-child { border-bottom: none; }
-  .matrix tbody tr:nth-child(even) {
-    background: var(--surface-alt);
-  }
   .matrix td {
     vertical-align: top;
-    padding: 14px 16px;
+    padding: 14px 18px;
     border-right: 1px solid var(--hairline);
     font-size: 13px;
     line-height: 1.5;
+    color: var(--ink-mid);
   }
   .matrix td:last-child { border-right: none; }
+  .lane-cell .lane-name { color: var(--ink); font-weight: 600; font-size: 14px; margin-bottom: 4px; letter-spacing: -0.005em; }
+  .lane-cell .lane-owner { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .lane-cell .lane-pack { color: var(--light); font-size: 11px; line-height: 1.5; }
 
-  .lane-cell .lane-name {
-    color: var(--white); font-weight: 600; font-size: 14px;
-    margin-bottom: 4px; letter-spacing: -0.005em;
-  }
-  .lane-cell .lane-owner {
-    color: var(--muted); font-size: 12px; margin-bottom: 8px;
-  }
-  .lane-cell .lane-pack {
-    color: var(--light); font-size: 11px; line-height: 1.5;
-    font-family: var(--sans);
-  }
-
-  .phase-cell .status {
+  .status {
     display: inline-block;
     padding: 2px 8px; border-radius: 100px;
     font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 8px;
   }
-  .status--active {
-    background: rgba(50, 95, 235, 0.14); color: var(--blueberry);
-    border: 1px solid rgba(50, 95, 235, 0.28);
-  }
-  .status--maintain {
-    background: rgba(138, 155, 176, 0.10); color: var(--muted);
-    border: 1px solid rgba(138, 155, 176, 0.20);
-  }
-  .status--skipped {
-    background: transparent; color: var(--light);
-    border: 1px solid var(--hairline);
-  }
-  .phase-cell .deliverable {
-    color: var(--gainsboro); font-size: 13px;
-    margin-bottom: 10px; line-height: 1.5;
-  }
-  .phase-cell .tools {
-    display: flex; flex-wrap: wrap; gap: 4px;
-    margin-top: 8px;
-  }
-  .phase-cell .tool {
+  .status--active { background: var(--ultramarine-soft); color: var(--ultramarine); border: 1px solid var(--ultramarine-line); }
+  .status--maintain { background: rgba(138, 155, 176, 0.10); color: var(--muted); border: 1px solid rgba(138, 155, 176, 0.30); }
+  .status--skipped { background: transparent; color: var(--muted); border: 1px solid var(--hairline-strong); }
+  .deliverable { color: var(--ink-mid); font-size: 13px; margin-bottom: 10px; line-height: 1.5; }
+  .tools { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 8px; }
+  .tool {
     display: inline-block;
     padding: 2px 8px; border-radius: 100px;
-    background: rgba(50, 95, 235, 0.08);
-    color: var(--blueberry);
-    border: 1px solid rgba(50, 95, 235, 0.18);
+    background: transparent;
+    color: var(--ink-mid);
+    border: 1px solid var(--hairline-strong);
     font-size: 11px; font-weight: 500;
   }
-  .phase-cell .tool--add {
-    background: transparent; color: var(--white);
-    border: 1px dashed rgba(50, 95, 235, 0.40);
+  .tool--add {
+    background: var(--ultramarine-soft);
+    color: var(--ultramarine);
+    border: 1px dashed var(--ultramarine-line);
   }
-  .phase-cell .tool--add::before { content: '+ '; color: var(--ultramarine); }
-  .phase-cell .cell-note {
-    margin-top: 6px; font-size: 11px; color: var(--light);
-    letter-spacing: 0.04em; line-height: 1.4;
-  }
+  .tool--add::before { content: '+ '; color: var(--ultramarine); }
+  .cell-note { margin-top: 6px; font-size: 11px; color: var(--light); letter-spacing: 0.02em; line-height: 1.4; }
 
-  /* GATES */
-  .gates {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    margin-top: 24px;
+  /* SCOPE CARDS */
+  .scope-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
   }
-  .gate-col-label {
+  .scope-card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .scope-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .scope-head .lane-name { font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .scope-head .lane-owner { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
+  .scope-phase {
+    display: inline-block; padding: 2px 8px; border-radius: 100px;
+    font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+    background: var(--surface-deep); color: var(--muted); font-weight: 600;
+    border: 1px solid var(--hairline-strong);
+    white-space: nowrap;
+  }
+  .scope-phase.active-foundation { background: var(--ultramarine-soft); color: var(--ultramarine); border-color: var(--ultramarine-line); }
+  .scope-block .scope-label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--light); font-weight: 600; margin-bottom: 8px;
+  }
+  .scope-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .scope-list li {
+    font-size: 13px; color: var(--ink-mid); line-height: 1.5;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .scope-list li::before {
+    content: ''; flex-shrink: 0;
+    width: 5px; height: 5px; border-radius: 100px;
+    background: var(--ultramarine); margin-top: 8px;
+  }
+  .scope-list.not-in li::before { background: var(--light); }
+  .scope-tools { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  /* TOOLING TABLE */
+  .tooling-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 6px; overflow: hidden;
+  }
+  .tooling-table th, .tooling-table td {
+    padding: 12px 18px; text-align: left;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 13px; color: var(--ink-mid);
+    vertical-align: top;
+  }
+  .tooling-table th {
+    background: var(--surface-deep); color: var(--ink);
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ultramarine); font-weight: 600; margin-bottom: 12px;
+    font-weight: 600;
   }
-  .gate-col ul {
-    list-style: none; display: flex; flex-direction: column; gap: 8px;
+  .tooling-table tr:last-child td { border-bottom: none; }
+  .tooling-table td.lane { color: var(--ink); font-weight: 600; }
+  .tooling-table td .tool { margin: 0 4px 4px 0; }
+
+  /* TIMELINES TABLE - extends .tooling-table */
+  .timelines-table tbody .lane-group {
+    background: var(--surface-deep);
+    color: var(--ultramarine);
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 18px;
+    border-top: 1px solid var(--hairline-strong);
+    border-bottom: 1px solid var(--hairline);
   }
-  .gate-col li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13px; color: var(--gainsboro); line-height: 1.5;
+  .timelines-table tbody:first-of-type .lane-group { border-top: none; }
+  .timelines-table .sla {
+    font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums;
   }
-  .gate-col li svg {
-    flex-shrink: 0; margin-top: 4px; color: var(--ultramarine);
+  .timelines-callout {
+    margin-top: 22px;
+    background: var(--ultramarine-soft);
+    border: 1px solid var(--ultramarine-line);
+    border-radius: 6px;
+    padding: 16px 20px;
+    font-size: 13px; color: var(--ink); line-height: 1.55;
+    display: flex; gap: 12px; align-items: flex-start;
   }
+  .timelines-callout strong { color: var(--ultramarine); font-weight: 600; }
 
   /* RETAINER */
   .retainer {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-    margin-top: 16px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    align-items: stretch;
   }
   .retainer-cell {
-    padding: 16px 20px;
+    padding: 22px 24px;
     border: 1px solid var(--hairline);
-    border-radius: 4px;
+    border-radius: 6px;
     background: var(--surface);
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column; gap: 14px;
   }
-  .retainer-head {
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 16px;
+  .retainer-cell.featured { border-color: var(--ultramarine-line); background: var(--surface); }
+  .retainer-cell.featured::before {
+    content: 'Most common'; display: inline-block;
+    padding: 2px 8px; border-radius: 100px; align-self: flex-start;
+    background: var(--ultramarine); color: var(--surface);
+    font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+    font-weight: 600;
   }
+  .retainer-head { display: flex; flex-direction: column; gap: 6px; }
   .retainer-name {
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--muted); font-weight: 600;
   }
   .retainer-window {
     display: block; font-size: 11px; letter-spacing: 0.04em;
-    color: var(--light); margin-top: 2px;
-    font-variant-numeric: tabular-nums;
+    color: var(--light); font-variant-numeric: tabular-nums;
   }
   .retainer-price {
-    font-family: var(--sans); font-size: 20px; font-weight: 600;
-    color: var(--white); letter-spacing: -0.02em;
+    font-size: 28px; font-weight: 600;
+    color: var(--ink); letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
+    line-height: 1;
   }
   .retainer-price span {
-    font-size: 12px; color: var(--muted); font-weight: 400;
-    margin-left: 2px;
+    font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 2px;
   }
   .retainer-coverage {
-    font-size: 12px; color: var(--muted); line-height: 1.5;
-    padding-top: 8px;
+    font-size: 13px; color: var(--ink-mid); line-height: 1.55;
+    padding-top: 12px;
     border-top: 1px solid var(--hairline);
   }
+  .retainer-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 4px; flex: 1; }
+  .retainer-list li { font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; line-height: 1.5; }
+  .retainer-list li::before {
+    content: ''; flex-shrink: 0;
+    width: 4px; height: 4px; border-radius: 100px;
+    background: var(--ultramarine); margin-top: 8px;
+  }
+
+  /* ADD-ONS */
+  .addons-note {
+    background: var(--surface-alt);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 12px; color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .addons-note strong { color: var(--ink); font-weight: 600; }
+  .addons-group-label {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--light); font-weight: 600;
+    margin: 20px 0 12px;
+  }
+  .addons-group-label:first-child { margin-top: 0; }
+  .addons-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .addon {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .addon-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .addon-name { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .addon-price {
+    font-size: 13px; color: var(--ultramarine); font-weight: 600;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .addon-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* GATES */
+  .gates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .gate-col {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 6px; padding: 22px 24px;
+  }
+  .gate-col-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600; margin-bottom: 14px;
+  }
+  .gate-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .gate-col li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--ink-mid); line-height: 1.5;
+  }
+  .gate-col li svg { flex-shrink: 0; margin-top: 4px; color: var(--ultramarine); }
+
+  /* CADENCE */
+  .cadence-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  .metrics-row { margin-top: 22px; }
+  .metrics-intro {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .metrics-intro .label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600;
+  }
+  .metrics-intro .title {
+    font-size: 14px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    align-items: stretch;
+  }
+  .metric-card {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-top: 3px solid var(--ultramarine);
+    border-radius: 6px; padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    height: 100%;
+  }
+  .metric-eyebrow {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600;
+  }
+  .metric-name {
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .metric-desc {
+    font-size: 13px; color: var(--ink-mid); line-height: 1.55;
+  }
+  .cadence-card {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 6px; padding: 22px 24px;
+  }
+  .cadence-card h3 {
+    font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+  .cadence-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .cadence-list li { display: flex; gap: 12px; font-size: 13px; line-height: 1.5; }
+  .cadence-list .when {
+    flex-shrink: 0; width: 100px;
+    font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--ultramarine); font-weight: 600; padding-top: 1px;
+  }
+  .cadence-list .what { color: var(--ink-mid); }
+  .cadence-list .what strong { color: var(--ink); font-weight: 600; }
 
   /* FOOTER */
   .footer {
-    padding: 24px 32px;
+    padding: 28px 32px;
     border-top: 1px solid var(--hairline);
     color: var(--light);
     font-size: 11px; letter-spacing: 0.04em;
     display: flex; justify-content: space-between;
     font-variant-numeric: tabular-nums;
+    background: var(--surface-alt);
   }
-  .footer code {
-    font-family: 'SF Mono', ui-monospace, monospace;
-    font-size: 11px; color: var(--muted);
-  }
+  .footer code { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
   /* RESPONSIVE */
   @media (max-width: 1100px) {
-    .summary { grid-template-columns: repeat(2, 1fr); }
-    .matrix { min-width: 1080px; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: repeat(2, 1fr); }
+    .cadence-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .funnel { grid-template-columns: repeat(2, 1fr); }
+    .funnel-stage:nth-child(2) { border-right: none; }
+    .funnel-stage:nth-child(1), .funnel-stage:nth-child(2) { border-bottom: 1px solid var(--hairline); }
   }
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
-    .header { padding: 16px 20px; }
+    .header { padding: 14px 20px; flex-wrap: wrap; }
+    .nav { width: 100%; }
     .footer { padding: 20px; flex-direction: column; gap: 8px; }
-    section { padding: 32px 0; }
-    .summary { grid-template-columns: 1fr; }
+    section { padding: 40px 0; }
+    .hero { padding: 40px 0 32px; }
+    .hero-title { font-size: 28px; }
+    .audience { grid-template-columns: 1fr; }
     .gates { grid-template-columns: 1fr; }
     .retainer { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: 1fr; }
+    .funnel { grid-template-columns: 1fr; }
+    .funnel-stage { border-right: none; border-bottom: 1px solid var(--hairline); }
+    .funnel-stage:last-child { border-bottom: none; }
   }
 
   /* PRINT */
   @media print {
-    body { background: var(--white); color: var(--black); font-size: 11px; }
-    .header { position: static; background: var(--white); border-bottom: 1px solid #ccc; }
+    body { background: var(--surface); font-size: 10.5px; }
+    .header { position: static; background: var(--surface); border-bottom: 1px solid #ccc; }
+    .nav { display: none; }
     .header-meta { color: #555; }
-    .header-meta .accent { color: var(--ultramarine); }
-    section { padding: 16px 0; page-break-inside: avoid; }
-    .section-title { color: var(--black); }
-    .matrix thead th {
-      background: #f4f4f4; color: var(--black); position: static;
+    section { padding: 14px 0; page-break-inside: avoid; }
+    .matrix thead th { background: #f4f4f4; position: static; }
+    .retainer-cell, .scope-card, .addon, .gate-col, .audience-card, .cadence-card, .timeline-step, .funnel-stage {
+      border: 1px solid #ccc; background: var(--surface); page-break-inside: avoid;
     }
-    .matrix tbody tr:nth-child(even) { background: #fafafa; }
-    .matrix td { border-color: #ddd; color: var(--black); }
-    .lane-cell .lane-name { color: var(--black); }
-    .lane-cell .lane-owner { color: #555; }
-    .lane-cell .lane-pack { color: #777; }
-    .phase-cell .deliverable { color: var(--black); }
-    .phase-cell .tool { background: #eef3ff; color: #1a3a8e; border-color: #c5d4ff; }
-    .phase-cell .tool--add { background: var(--white); border-style: dashed; }
-    .retainer-cell { border-color: #ccc; background: var(--white); }
-    .retainer-name { color: #555; }
-    .retainer-window { color: #777; }
-    .retainer-price { color: var(--black); }
-    .gate-col li { color: var(--black); }
-    .summary-list li { color: var(--black); }
-    .summary-list li .dim { color: #555; }
-    .footer { color: #777; border-color: #ccc; }
+    .onboarding-callout { background: #f6f9ff; border-color: #c5d4ff; }
+    .scope-grid, .addons-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline { min-width: 0; grid-template-columns: repeat(5, 1fr); }
+    .timeline::before { display: none; }
+    .footer { background: var(--surface); border-color: #ccc; }
     @page { size: A3 landscape; margin: 12mm; }
   }
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <header class="header">
-  <a href="#" class="header-logo">
-    <img src="https://www.corient.com.au/wp-content/uploads/2025/08/white-logo-1-1.webp" alt="Corient">
-  </a>
+  <div class="header-left">
+    <a href="#top" class="logo" aria-label="Corient OS home">
+      <img src="assets/corient-logo.png" alt="">
+      <span class="logo-suffix">OS</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Page sections">
+    <a href="#use">Use</a>
+    <a href="#onboarding">Onboarding</a>
+    <a href="#system">System</a>
+    <a href="#lanes">Lanes</a>
+    <a href="#scope">Scope</a>
+    <a href="#timelines">Turnaround</a>
+    <a href="#tooling">Tooling</a>
+    <a href="#retainer">Retainer</a>
+    <a href="#addons">Add-ons</a>
+    <a href="#gates">Gates</a>
+    <a href="#cadence">Cadence</a>
+  </nav>
   <div class="header-meta">
-    OS <span class="accent">·</span> Internal SOP
+    Servicing system <span aria-hidden="true">·</span> v3.6
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="main" tabindex="-1">
+<div id="top"></div>
 
-<!-- SUMMARY REFERENCE -->
-<section>
-  <div class="summary">
-    <div>
-      <div class="summary-label">Phases</div>
-      <ul class="summary-list">
-        <li><strong>Foundation</strong> <span class="dim">· Months 0&ndash;3</span></li>
-        <li><strong>Base</strong> <span class="dim">· Months 3&ndash;6</span></li>
-        <li><strong>Expansion</strong> <span class="dim">· Months 6&ndash;12</span></li>
-        <li class="dim" style="margin-top: 6px; font-size: 11px;">Sequence is non-negotiable.</li>
-      </ul>
+<!-- HERO -->
+<section class="hero" id="use" aria-labelledby="use-title">
+  <span class="hero-eyebrow">The Corient servicing operating system</span>
+  <h1 class="hero-title" id="use-title">One page. Every lane, every phase, every tool, every dollar.</h1>
+  <p class="hero-sub">A working reference for the delivery team and a clear walkthrough for clients. Read it down a column for one phase, or across a row for one lane. Account managers point to this when a client asks what is in scope, what is coming next, and what costs extra.</p>
+
+  <div class="audience">
+    <div class="audience-card">
+      <div class="role">For the delivery team</div>
+      <h3>Stay in sequence. Stay in lane.</h3>
+      <p>This is the SOP. Each lane carries an owner, a task pack, a tool set, and a monthly volume. Foundation, Base, and Expansion describe maturity within each lane. The matrix tells you what activates when. The scope cards tell you what ships every month.</p>
     </div>
-    <div>
-      <div class="summary-label">Lanes (9)</div>
-      <ul class="summary-list">
-        <li>Onboarding · Brand · Website</li>
-        <li>Production · Content · Lifecycle</li>
-        <li>Outreach · SEO · Paid</li>
-        <li class="dim" style="margin-top: 6px; font-size: 11px;">Each lane carries owner, task pack, tools.</li>
-      </ul>
-    </div>
-    <div>
-      <div class="summary-label">Substrate (Notion)</div>
-      <ul class="summary-list">
-        <li><strong>Client OS</strong> <span class="dim">· where work lives</span></li>
-        <li><strong>Brief OS</strong> <span class="dim">· living brief</span></li>
-        <li><strong>Report OS</strong> <span class="dim">· lane health + metrics</span></li>
-        <li class="dim" style="margin-top: 6px; font-size: 11px;">Stands up at onboarding. Agency Analytics layers in at Base.</li>
-      </ul>
-    </div>
-    <div>
-      <div class="summary-label">Status legend</div>
-      <ul class="summary-list">
-        <li><strong>Active</strong> <span class="dim">· building or running</span></li>
-        <li><strong>Maintain</strong> <span class="dim">· keep it running</span></li>
-        <li><strong>One-time</strong> <span class="dim">· done in earlier phase</span></li>
-        <li><strong>Not active</strong> <span class="dim">· activates later</span></li>
-      </ul>
+    <div class="audience-card">
+      <div class="role">For account managers and clients</div>
+      <h3>Show this. Walk the funnel.</h3>
+      <p>Open on a client call. Start with Onboarding. Walk the unified funnel to show how lanes feed each other. Open the relevant scope card when a client asks what comes in their retainer. Point at the add-ons section for anything extra.</p>
     </div>
   </div>
 </section>
 
-<!-- THE MATRIX -->
-<section>
-  <span class="section-label">The matrix</span>
-  <h2 class="section-title">Lane &times; phase reference.</h2>
-  <p class="section-sub">What activates, what ships, which tools. Reads either way: down a column for one phase, across a row for one lane.</p>
+<!-- ONBOARDING -->
+<section id="onboarding" aria-labelledby="onboarding-title">
+  <div class="section-head">
+    <span class="section-label">Onboarding · Retainers, campaigns, projects</span>
+    <h2 class="section-title" id="onboarding-title">From signed brief to first deliverables in four weeks.</h2>
+    <p class="section-sub">The same flow applies to retainer launches, new campaigns, and one-off projects, scaled to scope. Owned by the Account Manager and Ops. Every step has a clear owner, a clear client input, and a clear output, all noted in WhatsApp with due dates. No formal kickoff. Slip on any input window and the start date moves with the client.</p>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="timeline">
+
+      <div class="timeline-step">
+        <div class="timeline-marker">0</div>
+        <div class="timeline-week">Week 0</div>
+        <div class="timeline-title">Signed brief</div>
+        <div class="timeline-meta">
+          <div class="row"><div class="label">Owner</div><div class="value">Sales + AM</div></div>
+          <div class="row"><div class="label">Client input</div><div class="value">Signed agreement or approved brief. First invoice cleared.</div></div>
+          <div class="row"><div class="label">Output</div><div class="value">Project opened in Corient OS. AM assigned. WhatsApp group created.</div></div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">1</div>
+        <div class="timeline-week">Week 1</div>
+        <div class="timeline-title">Access + WhatsApp brief</div>
+        <div class="timeline-meta">
+          <div class="row"><div class="label">Owner</div><div class="value">AM + Ops</div></div>
+          <div class="row"><div class="label">Client input</div><div class="value">Tool logins, brand assets, team intros, joined the WhatsApp group.</div></div>
+          <div class="row"><div class="label">Output</div><div class="value">Notion Dashboard stood up. WhatsApp group live with first due dates set. All systems accessible.</div></div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">2</div>
+        <div class="timeline-week">Week 2</div>
+        <div class="timeline-title">Audit + brief draft</div>
+        <div class="timeline-meta">
+          <div class="row"><div class="label">Owner</div><div class="value">Strategist + AM</div></div>
+          <div class="row"><div class="label">Client input</div><div class="value">90 minute discovery call. Commercial data shared. Baseline metrics confirmed.</div></div>
+          <div class="row"><div class="label">Output</div><div class="value">Brief draft. Lane activation plan. Baselines captured in Agency Analytics.</div></div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">3</div>
+        <div class="timeline-week">Week 3</div>
+        <div class="timeline-title">Brief lock + lanes activate</div>
+        <div class="timeline-meta">
+          <div class="row"><div class="label">Owner</div><div class="value">AM + lane leads</div></div>
+          <div class="row"><div class="label">Client input</div><div class="value">Sign off the brief. Confirm monthly marketing call slot. Confirm escalation contacts.</div></div>
+          <div class="row"><div class="label">Output</div><div class="value">All retainer lanes kicked off. Agency Analytics dashboard live. First sprint scheduled.</div></div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">4</div>
+        <div class="timeline-week">Week 4</div>
+        <div class="timeline-title">First deliverables live</div>
+        <div class="timeline-meta">
+          <div class="row"><div class="label">Owner</div><div class="value">Lane specialists</div></div>
+          <div class="row"><div class="label">Client input</div><div class="value">Approvals on first ships. Feedback inside 48 hours.</div></div>
+          <div class="row"><div class="label">Output</div><div class="value">First creative batch, first articles, first social posts, first EDM live.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="onboarding-callout">
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false" style="flex-shrink:0;margin-top:1px;"><path d="M8 1.5L9.85 5.27L14 5.88L11 8.81L11.71 12.94L8 10.99L4.29 12.94L5 8.81L2 5.88L6.15 5.27L8 1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/></svg>
+    <div><strong>Onboarding is the gate.</strong> No work starts until the brief is locked and due dates are in WhatsApp. Campaigns and projects follow the same shape, compressed to their scope. If a client misses an input window, delivery moves with them. The cadence resets, the price does not.</div>
+  </div>
+</section>
+
+<!-- OUR UNIFIED SYSTEM -->
+<section id="system" aria-labelledby="system-title">
+  <div class="section-head">
+    <span class="section-label">Our unified system</span>
+    <h2 class="section-title" id="system-title">Every lane feeds one funnel.</h2>
+    <p class="section-sub">Lanes are not channels operating in isolation. Brand sets the surface. Top-of-funnel lanes attract attention. Mid-funnel lanes engage and educate. Conversion lanes close the gap to revenue. Retention lanes compound. This is how every active lane maps to the customer journey.</p>
+  </div>
+
+  <div class="funnel">
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-number">Stage 1</div>
+      <div class="funnel-stage-name">Attract</div>
+      <div class="funnel-stage-sub">Eyeballs. Reach. First impression. The lanes that put the brand in front of a cold audience.</div>
+      <div class="funnel-lanes-list">
+        <span class="funnel-lane">Brand</span>
+        <span class="funnel-lane">SEO</span>
+        <span class="funnel-lane">Paid Ads</span>
+        <span class="funnel-lane">Organic Social</span>
+      </div>
+      <div class="funnel-output">
+        <strong>Outputs</strong>
+        Branded search, paid reach, ranked articles, organic impressions, share of category voice.
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-number">Stage 2</div>
+      <div class="funnel-stage-name">Engage</div>
+      <div class="funnel-stage-sub">Interest. Education. Time on brand. The lanes that move a curious prospect closer to the action.</div>
+      <div class="funnel-lanes-list">
+        <span class="funnel-lane">Website</span>
+        <span class="funnel-lane">SEO</span>
+        <span class="funnel-lane">Organic Social</span>
+        <span class="funnel-lane">Outreach</span>
+      </div>
+      <div class="funnel-output">
+        <strong>Outputs</strong>
+        Sessions, articles read, follows, replies, email list growth, qualified inbound enquiries.
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-number">Stage 3</div>
+      <div class="funnel-stage-name">Convert</div>
+      <div class="funnel-stage-sub">Action. Sign-up. Sale. The lanes that close the gap between interest and revenue.</div>
+      <div class="funnel-lanes-list">
+        <span class="funnel-lane">Website</span>
+        <span class="funnel-lane">Paid Ads</span>
+        <span class="funnel-lane">Outreach</span>
+        <span class="funnel-lane">Nurture</span>
+      </div>
+      <div class="funnel-output">
+        <strong>Outputs</strong>
+        Leads booked, meetings held, sales completed, revenue attributed back to channel.
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-number">Stage 4</div>
+      <div class="funnel-stage-name">Retain</div>
+      <div class="funnel-stage-sub">Loyalty. Lifetime value. Compounding. The lanes that turn customers into repeat buyers and advocates.</div>
+      <div class="funnel-lanes-list">
+        <span class="funnel-lane">Nurture</span>
+        <span class="funnel-lane">Organic Social</span>
+        <span class="funnel-lane">AI Automation</span>
+        <span class="funnel-lane">Brand</span>
+      </div>
+      <div class="funnel-output">
+        <strong>Outputs</strong>
+        Repeat purchase, win-back, referrals, community, LTV expansion, churn reduction.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LANES MATRIX -->
+<section id="lanes" aria-labelledby="lanes-title">
+  <div class="section-head">
+    <span class="section-label">Lanes · 8 delivery + onboarding</span>
+    <h2 class="section-title" id="lanes-title">Lane by phase reference.</h2>
+    <p class="section-sub">Each row is a lane with an owner, a task pack, and a tool set. Each column is a phase with a fixed time window. Read down for what one phase contains, read across for what one lane does over twelve months.</p>
+  </div>
 
   <div class="matrix-wrap">
     <table class="matrix">
+      <caption class="sr-only">Lane by phase reference. Each lane shows its activity status and deliverables across the Foundation, Base, and Expansion phases.</caption>
       <thead>
         <tr>
-          <th class="lane-col">Lane <span class="col-window">Owner · task pack</span></th>
-          <th class="phase-col">Foundation <span class="col-window">Months 0&ndash;3</span></th>
-          <th class="phase-col">Base <span class="col-window">Months 3&ndash;6</span></th>
-          <th class="phase-col">Expansion <span class="col-window">Months 6&ndash;12</span></th>
+          <th class="lane-col" scope="col">Lane <span class="col-window">Owner · task pack</span></th>
+          <th class="phase-col" scope="col">Foundation <span class="col-window">Months 0&ndash;3</span></th>
+          <th class="phase-col" scope="col">Base <span class="col-window">Months 3&ndash;6</span></th>
+          <th class="phase-col" scope="col">Expansion <span class="col-window">Months 6&ndash;12</span></th>
         </tr>
       </thead>
       <tbody>
@@ -403,264 +865,99 @@
           <td class="lane-cell">
             <div class="lane-name">Onboarding</div>
             <div class="lane-owner">Account Manager + Ops</div>
-            <div class="lane-pack">Email &rarr; Access Setup &rarr; Active Lanes Set</div>
+            <div class="lane-pack">Brief signed <span aria-hidden="true">&rarr;</span> Access <span aria-hidden="true">&rarr;</span> Brief lock <span aria-hidden="true">&rarr;</span> First ships</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Client OS, Brief OS, Report OS stood up in Notion. Active lanes locked.</div>
-            <div class="tools">
-              <span class="tool">Notion</span>
-              <span class="tool">GHL</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--skipped">One-time</span>
-            <div class="deliverable">Completed in Foundation. Not re-run.</div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--skipped">One-time</span>
-            <div class="deliverable">Completed in Foundation. Not re-run.</div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Notion Dashboard and Brief stood up. Agency Analytics dashboard initialised. Active lanes locked by Week 3.</div><div class="tools"><span class="tool">Notion</span><span class="tool">GHL</span><span class="tool">WhatsApp</span></div></td>
+          <td><span class="status status--skipped">One-time</span><div class="deliverable">Completed in Foundation. Not re-run.</div></td>
+          <td><span class="status status--skipped">One-time</span><div class="deliverable">Completed in Foundation. Not re-run.</div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
             <div class="lane-name">Brand</div>
             <div class="lane-owner">Strategist + Designer</div>
-            <div class="lane-pack">Direction &rarr; Design &rarr; Review &rarr; Develop</div>
+            <div class="lane-pack">Direction <span aria-hidden="true">&rarr;</span> Design <span aria-hidden="true">&rarr;</span> Review <span aria-hidden="true">&rarr;</span> Apply</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Positioning approved. Narrative locked. Identity system live.</div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--maintain">Maintain</span>
-            <div class="deliverable">Narrative shows up consistently across every customer-facing surface.</div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--maintain">Maintain</span>
-            <div class="deliverable">Branded search up 25%+. Category reference point.</div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Positioning approved. Narrative locked. Identity system applied across owned surfaces.</div><div class="tools"><span class="tool">Figma</span></div></td>
+          <td><span class="status status--maintain">Maintain</span><div class="deliverable">Narrative shows up consistently across every customer-facing surface.</div></td>
+          <td><span class="status status--maintain">Maintain</span><div class="deliverable">Target: branded search up 25% plus. Category reference point.</div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
             <div class="lane-name">Website</div>
             <div class="lane-owner">Strategist + Designer + Dev</div>
-            <div class="lane-pack">Direction &rarr; Design &rarr; Review &rarr; Develop</div>
+            <div class="lane-pack">Direction <span aria-hidden="true">&rarr;</span> Design <span aria-hidden="true">&rarr;</span> Review <span aria-hidden="true">&rarr;</span> Develop</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Ships on Webflow or Replit. Conversion baseline captured.</div>
-            <div class="tools">
-              <span class="tool">Webflow / Replit</span>
-              <span class="tool tool--add">Microsoft Clarity</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">CRO cycles run. CR up 30%+ from baseline.</div>
-            <div class="tools">
-              <span class="tool">Webflow</span>
-              <span class="tool tool--add">Hotjar</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Personalisation lifting CR another 15%.</div>
-            <div class="tools">
-              <span class="tool">Webflow</span>
-              <span class="tool tool--add">Mutiny</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Ships on Webflow or Replit. Conversion baseline captured. CRO programme initiated.</div><div class="tools"><span class="tool">Webflow / Replit</span><span class="tool tool--add">Microsoft Clarity</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Two CRO experiments per month. Target: conversion rate up 30% plus from baseline.</div><div class="tools"><span class="tool">Webflow</span><span class="tool tool--add">Hotjar</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Target: personalisation lifting conversion another 15%.</div><div class="tools"><span class="tool">Webflow</span><span class="tool tool--add">Mutiny</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
-            <div class="lane-name">Production</div>
-            <div class="lane-owner">Producer + AI Specialist</div>
-            <div class="lane-pack">Plan &rarr; Create &rarr; Review &rarr; Deliver</div>
+            <div class="lane-name">SEO</div>
+            <div class="lane-owner">SEO Specialist + Copywriter</div>
+            <div class="lane-pack">Audit <span aria-hidden="true">&rarr;</span> Plan <span aria-hidden="true">&rarr;</span> Write <span aria-hidden="true">&rarr;</span> Publish</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">First photoreal asset library shipped.</div>
-            <div class="tools">
-              <span class="tool">Photoreal AI</span>
-            </div>
-            <div class="cell-note">Fal &middot; Runway &middot; Flux &middot; Higgsfield</div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Monthly photoreal batch live and on brand.</div>
-            <div class="tools">
-              <span class="tool">Photoreal AI</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Visual language is recognisable IP.</div>
-            <div class="tools">
-              <span class="tool">Photoreal AI</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Search Atlas baseline. Core Web Vitals green. First four articles published (one cornerstone, three supporting).</div><div class="tools"><span class="tool">Search Atlas</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Topic authority compounding. 12 plus articles live. Organic traffic up month over month.</div><div class="tools"><span class="tool">Search Atlas</span><span class="tool">Agency Analytics</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Category leadership. Branded and non-branded both compounding.</div><div class="tools"><span class="tool">Search Atlas</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
-            <div class="lane-name">Content &amp; Social</div>
-            <div class="lane-owner">Copywriter + Social Manager</div>
-            <div class="lane-pack">Plan &rarr; Create &rarr; Results Review</div>
+            <div class="lane-name">Paid Ads</div>
+            <div class="lane-owner">Media Buyer + Designer</div>
+            <div class="lane-pack">Campaign build <span aria-hidden="true">&rarr;</span> Creative ship <span aria-hidden="true">&rarr;</span> Live manage <span aria-hidden="true">&rarr;</span> Results</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Voice locked. Ten cornerstone pieces live across owned channels.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-              <span class="tool">Postiz</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Weekly cadence held. Engagement above category benchmark.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-              <span class="tool">Postiz</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Inbound replacing outbound on organic channels.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-              <span class="tool">Postiz</span>
-              <span class="tool tool--add">StoryChief</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Meta and Google live. Two creative concepts per channel. CPL and ROAS baseline captured.</div><div class="tools"><span class="tool">Meta</span><span class="tool">Google</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">LinkedIn joins. All three at target ROAS. Agency Analytics dashboards live.</div><div class="tools"><span class="tool">Meta</span><span class="tool">Google</span><span class="tool tool--add">LinkedIn</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Multi-channel attributed and profitable.</div><div class="tools"><span class="tool">Meta</span><span class="tool">Google</span><span class="tool">LinkedIn</span><span class="tool tool--add">Pinterest</span><span class="tool tool--add">YouTube</span><span class="tool tool--add">TikTok</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
-            <div class="lane-name">Lifecycle (EDM)</div>
-            <div class="lane-owner">Email Specialist</div>
-            <div class="lane-pack">Build &rarr; Send &rarr; Results Review</div>
+            <div class="lane-name">Organic Social</div>
+            <div class="lane-owner">Social Manager + Content</div>
+            <div class="lane-pack">Plan <span aria-hidden="true">&rarr;</span> Create <span aria-hidden="true">&rarr;</span> Post <span aria-hidden="true">&rarr;</span> Community</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Welcome series live in GHL. List capture working.</div>
-            <div class="tools">
-              <span class="tool">GHL</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Multi-touch nurture. EDM driving 10%+ of pipeline.</div>
-            <div class="tools">
-              <span class="tool">GHL</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Behavioural automations tied to LTV.</div>
-            <div class="tools">
-              <span class="tool">GHL</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Two priority channels live. 12 posts + 3 reels + 4 long-form posts per month.</div><div class="tools"><span class="tool">Postiz</span><span class="tool">Photoreal AI</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Engagement above category benchmark. Reels cadence held.</div><div class="tools"><span class="tool">Postiz</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Inbound DMs and replies driving qualified pipeline.</div><div class="tools"><span class="tool">Postiz</span><span class="tool tool--add">StoryChief</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
             <div class="lane-name">Outreach</div>
             <div class="lane-owner">Outreach Specialist</div>
-            <div class="lane-pack">System Setup &rarr; Manage &rarr; Results &rarr; Reply Handoff</div>
+            <div class="lane-pack">System setup <span aria-hidden="true">&rarr;</span> Manage <span aria-hidden="true">&rarr;</span> Results <span aria-hidden="true">&rarr;</span> Reply handoff</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--skipped">Not active</span>
-            <div class="deliverable">Activates in Base.</div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Cold system live. Reply rate above 8%.</div>
-            <div class="tools">
-              <span class="tool">Instantly</span>
-              <span class="tool">Manychat</span>
-              <span class="tool tool--add">Clay</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Predictable spend-to-meeting ratio at scale. Gong feeding insights back.</div>
-            <div class="tools">
-              <span class="tool">Instantly</span>
-              <span class="tool tool--add">Smartlead</span>
-              <span class="tool tool--add">Gong</span>
-            </div>
-          </td>
+          <td><span class="status status--skipped">Not active</span><div class="deliverable">Best paired with Brand and Website. Activates once those are stable.</div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Cold system live. 200 prospects per month. Reply rate above 8%.</div><div class="tools"><span class="tool">Instantly</span><span class="tool">Manychat</span><span class="tool tool--add">Clay</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Predictable spend-to-meeting ratio at scale. Gong feeding insights back.</div><div class="tools"><span class="tool">Instantly</span><span class="tool tool--add">Smartlead</span><span class="tool tool--add">Gong</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
-            <div class="lane-name">SEO</div>
-            <div class="lane-owner">SEO Specialist</div>
-            <div class="lane-pack">Direction &rarr; Build &rarr; Review &rarr; Publish</div>
+            <div class="lane-name">AI Automation</div>
+            <div class="lane-owner">AI Specialist + Strategist</div>
+            <div class="lane-pack">Audit <span aria-hidden="true">&rarr;</span> Build <span aria-hidden="true">&rarr;</span> Deploy <span aria-hidden="true">&rarr;</span> Maintain</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Search Atlas baseline. Core Web Vitals all green.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Topic authority compounding. Organic traffic up month over month.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Category leadership. Branded and non-branded both compounding.</div>
-            <div class="tools">
-              <span class="tool">Search Atlas</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">First workflow automation shipped. Notion intelligence layer documented.</div><div class="tools"><span class="tool">n8n</span><span class="tool">Notion</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">First agent live in production. Two end-to-end automations running.</div><div class="tools"><span class="tool">n8n</span><span class="tool">OpenAI</span><span class="tool tool--add">Anthropic</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Agent suite handling triage, drafting, and lead scoring. Quarterly capability audit.</div><div class="tools"><span class="tool">n8n</span><span class="tool">OpenAI</span><span class="tool">Anthropic</span><span class="tool tool--add">Make</span></div></td>
         </tr>
 
         <tr>
           <td class="lane-cell">
-            <div class="lane-name">Paid Ads</div>
-            <div class="lane-owner">Media Buyer</div>
-            <div class="lane-pack">Campaign Build &rarr; Funnel Build &rarr; Live Manage &rarr; Results</div>
+            <div class="lane-name">Nurture</div>
+            <div class="lane-owner">Email + Lifecycle Specialist</div>
+            <div class="lane-pack">Build <span aria-hidden="true">&rarr;</span> Send <span aria-hidden="true">&rarr;</span> Automate <span aria-hidden="true">&rarr;</span> Review</div>
           </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Meta and Google live. CPL and ROAS baseline captured.</div>
-            <div class="tools">
-              <span class="tool">Meta</span>
-              <span class="tool">Google</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">LinkedIn joins. All three at target ROAS. Agency Analytics dashboards live.</div>
-            <div class="tools">
-              <span class="tool">Meta</span>
-              <span class="tool">Google</span>
-              <span class="tool tool--add">LinkedIn</span>
-            </div>
-          </td>
-          <td class="phase-cell">
-            <span class="status status--active">Active</span>
-            <div class="deliverable">Multi-channel attributed and profitable.</div>
-            <div class="tools">
-              <span class="tool">Meta</span>
-              <span class="tool">Google</span>
-              <span class="tool">LinkedIn</span>
-              <span class="tool tool--add">Pinterest</span>
-              <span class="tool tool--add">YouTube</span>
-              <span class="tool tool--add">TikTok</span>
-            </div>
-          </td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Welcome series live in GHL. List capture working. Two campaign EDMs per month.</div><div class="tools"><span class="tool">GHL</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Multi-touch nurture. EDM driving 10% plus of pipeline.</div><div class="tools"><span class="tool">GHL</span></div></td>
+          <td><span class="status status--active">Active</span><div class="deliverable">Behavioural automations tied to LTV. Win-back working.</div><div class="tools"><span class="tool">GHL</span></div></td>
         </tr>
 
       </tbody>
@@ -668,84 +965,777 @@
   </div>
 </section>
 
+<!-- FIXED SCOPE PER LANE -->
+<section id="scope" aria-labelledby="scope-title">
+  <div class="section-head">
+    <span class="section-label">Fixed scope</span>
+    <h2 class="section-title" id="scope-title">What ships every month, by lane.</h2>
+    <p class="section-sub">The contract view. Each card lists what the client receives every month inside the retainer, the volumes attached to each deliverable, the tooling used, and what sits outside the lane. Anything in the outside-scope list is either covered by another lane or available as an add-on.</p>
+  </div>
+
+  <div class="scope-grid">
+
+    <!-- ONBOARDING -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Onboarding</div>
+          <div class="lane-owner">Account Manager + Ops</div>
+        </div>
+        <span class="scope-phase active-foundation">Foundation · One-time</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Deliverables (Weeks 0 to 4)</div>
+        <ul class="scope-list">
+          <li>Notion Dashboard and Brief stood up</li>
+          <li>Agency Analytics dashboard initialised with baselines</li>
+          <li>All tool access provisioned and tested</li>
+          <li>WhatsApp group created with AM and lane leads</li>
+          <li>Discovery call run, baselines captured, brief locked</li>
+          <li>First sprint scheduled, all retainer lanes initiated</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Notion</span><span class="tool">GHL</span><span class="tool">WhatsApp</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Custom platform builds beyond Notion substrate</li>
+          <li>Historical data migration from legacy systems (add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BRAND -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Brand</div>
+          <div class="lane-owner">Strategist + Designer</div>
+        </div>
+        <span class="scope-phase active-foundation">Foundation heavy · Maintain Base + Expansion</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>One brand-system review covering positioning, identity, voice</li>
+          <li>Brand-asset library kept current (logo lockups, type, colour, templates)</li>
+          <li>Identity QA on every shipped deliverable across Website, Ads, Social, EDM</li>
+          <li>Quarterly narrative refresh and customer-facing surface audit</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Figma</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Brand kit production (add-on)</li>
+          <li>Brand refresh or identity tweaks (add-on)</li>
+          <li>Full identity rebuilds and new sub-brand creation (custom quote)</li>
+          <li>Naming projects and trademark research (custom quote)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WEBSITE -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Website</div>
+          <div class="lane-owner">Strategist + Designer + Dev</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>Two CRO experiments planned, shipped, measured</li>
+          <li>Conversion-rate review with heatmaps, session recordings, funnel reads</li>
+          <li>Ongoing maintenance, security, plugin and CMS updates</li>
+          <li>Quarterly performance audit (Core Web Vitals, mobile, accessibility)</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Webflow / Replit</span><span class="tool">Microsoft Clarity</span><span class="tool tool--add">Hotjar</span><span class="tool tool--add">Mutiny</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Full site rebuilds or new top-level template builds (add-on)</li>
+          <li>eCommerce or membership platform builds (add-on)</li>
+          <li>Standalone landing pages outside the main site (add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">SEO</div>
+          <div class="lane-owner">SEO Specialist + Copywriter</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>Four SEO-led articles: one cornerstone (2000 plus words), three supporting (800 to 1200 words)</li>
+          <li>Monthly technical site audit and fix list</li>
+          <li>Topic cluster planning synced with Organic Social and Nurture</li>
+          <li>Backlink monitoring and outreach for two to three placements</li>
+          <li>Monthly Search Atlas report on rankings, traffic, conversions</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Search Atlas</span><span class="tool">Agency Analytics</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Additional articles beyond the monthly four (add-on)</li>
+          <li>Penalty recovery or manual action remediation (add-on)</li>
+          <li>International SEO (separate market scope per region)</li>
+          <li>Large-scale site migrations (add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAID ADS -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Paid Ads</div>
+          <div class="lane-owner">Media Buyer + Designer</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>Two new creative concepts shipped per channel (Meta, Google, LinkedIn from Base)</li>
+          <li>Daily budget pacing, optimisation, audience refinement</li>
+          <li>Weekly performance reporting, monthly strategic review</li>
+          <li>Pixel and conversion-tracking integrity check, attribution review</li>
+          <li>Quarterly funnel restructure based on cohort data</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Meta</span><span class="tool">Google</span><span class="tool">Photoreal AI</span><span class="tool tool--add">LinkedIn</span><span class="tool tool--add">Pinterest</span><span class="tool tool--add">YouTube</span><span class="tool tool--add">TikTok</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Ad spend (client-paid direct to platform)</li>
+          <li>Extra creative beyond two per channel (add-on)</li>
+          <li>High-production video shoots (add-on)</li>
+          <li>Affiliate or partner programme management (add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ORGANIC SOCIAL -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Organic Social</div>
+          <div class="lane-owner">Social Manager + Content</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>12 scheduled posts across two priority channels (LinkedIn and IG default)</li>
+          <li>Three short-form videos (reels or shorts) using brand templates</li>
+          <li>Four long-form thought-leadership posts (LinkedIn articles, founder content)</li>
+          <li>Daily community management (comments, DMs, mentions)</li>
+          <li>Monthly social-listening and competitor pulse</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Postiz</span><span class="tool">Photoreal AI</span><span class="tool tool--add">StoryChief</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Extra reels or shorts beyond the monthly three (add-on)</li>
+          <li>Influencer outreach and campaign management (add-on)</li>
+          <li>Paid social amplification (handled in Paid Ads)</li>
+          <li>Founder-led personal channel management (add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- OUTREACH -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Outreach</div>
+          <div class="lane-owner">Outreach Specialist</div>
+        </div>
+        <span class="scope-phase">Activates Base · Pair with Brand + Website</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>One outbound campaign live across cold email and LinkedIn</li>
+          <li>200 prospects per month sourced, enriched, sequenced</li>
+          <li>Weekly reply triage and handoff to client sales team</li>
+          <li>ICP list refresh, sequence A/B tests, deliverability monitoring</li>
+          <li>Monthly reply-rate and meeting-booked report</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">Instantly</span><span class="tool">Manychat</span><span class="tool tool--add">Clay</span><span class="tool tool--add">Smartlead</span><span class="tool tool--add">Gong</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Sales-call execution and deal closing (client side)</li>
+          <li>CRM management beyond reply handoff (add-on)</li>
+          <li>Paid LinkedIn ad campaigns (handled in Paid Ads)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AI AUTOMATION -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">AI Automation</div>
+          <div class="lane-owner">AI Specialist + Strategist</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>One workflow automation built or improved in n8n or Make</li>
+          <li>One agent maintained or extended (inbound triage, lead scorer, content drafter)</li>
+          <li>Quarterly capability audit identifying new automation opportunities</li>
+          <li>Documentation kept current in Notion</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">n8n</span><span class="tool">OpenAI</span><span class="tool">Anthropic</span><span class="tool tool--add">Make</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Custom enterprise software builds (add-on, scoped separately)</li>
+          <li>ML model training or fine-tuning (add-on)</li>
+          <li>Infrastructure, hosting, security audit (client-managed or add-on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NURTURE -->
+    <div class="scope-card">
+      <div class="scope-head">
+        <div>
+          <div class="lane-name">Nurture</div>
+          <div class="lane-owner">Email + Lifecycle Specialist</div>
+        </div>
+        <span class="scope-phase active-foundation">All phases</span>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">What ships every month</div>
+        <ul class="scope-list">
+          <li>One new lifecycle automation built (welcome, post-purchase, re-engagement, win-back)</li>
+          <li>Two campaign EDMs (newsletter, promotional, announcement)</li>
+          <li>Segmentation reviewed monthly, list hygiene maintained</li>
+          <li>Monthly EDM performance report (open, click, attributed revenue)</li>
+        </ul>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Tooling</div>
+        <div class="scope-tools"><span class="tool">GHL</span></div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-label">Not in scope</div>
+        <ul class="scope-list not-in">
+          <li>Extra campaign EDMs beyond the monthly two (add-on)</li>
+          <li>SMS marketing or push notifications (add-on)</li>
+          <li>Direct mail or physical campaigns (add-on)</li>
+          <li>Transactional email infrastructure (client-managed)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICING TIMELINES -->
+<section id="timelines" aria-labelledby="timelines-title">
+  <div class="section-head">
+    <span class="section-label">Turnaround</span>
+    <h2 class="section-title" id="timelines-title">How long each deliverable takes.</h2>
+    <p class="section-sub">First-draft turnaround from a complete brief. Business days, AWST. Revisions land inside the windows below. Anything faster is a rush request, handled via the policy at the bottom of this section.</p>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table class="tooling-table timelines-table">
+      <caption class="sr-only">Turnaround times by deliverable. First draft and revisions windows in business days, from a complete brief.</caption>
+      <thead>
+        <tr>
+          <th style="width: 30%;" scope="col">Deliverable</th>
+          <th style="width: 18%;" scope="col">First draft</th>
+          <th style="width: 18%;" scope="col">Revisions</th>
+          <th style="width: 34%;" scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">Organic Social</th></tr>
+        <tr>
+          <td>12 social posts (monthly batch)</td>
+          <td><span class="sla">5 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>Single-post swaps inside an approved batch turn in 2 days.</td>
+        </tr>
+        <tr>
+          <td>3 reels (monthly batch)</td>
+          <td><span class="sla">7 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>From an approved hook list. Extra reels pack ships in 10 days.</td>
+        </tr>
+        <tr>
+          <td>4 long-form posts (monthly)</td>
+          <td><span class="sla">5 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>LinkedIn articles or founder content. Briefed once a month.</td>
+        </tr>
+        <tr>
+          <td>Extra reels pack (10) <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>Beyond the monthly three. Brand templates already locked.</td>
+        </tr>
+        <tr>
+          <td>Extra ad creative pack (5) <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">7 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>Static, video, or carousel. Channel selected at brief.</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">SEO + Content</th></tr>
+        <tr>
+          <td>SEO supporting article (800 to 1200 words)</td>
+          <td><span class="sla">5 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>Three per month inside the SEO lane.</td>
+        </tr>
+        <tr>
+          <td>SEO cornerstone article (2000 plus words)</td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>One per month inside the SEO lane.</td>
+        </tr>
+        <tr>
+          <td>Long-form article <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>Beyond the monthly four. Single article, fully researched.</td>
+        </tr>
+        <tr>
+          <td>Whitepaper or guide <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">15 days</span></td>
+          <td><span class="sla">5 days</span></td>
+          <td>Research, copy, design, gated landing page included.</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">Paid Ads</th></tr>
+        <tr>
+          <td>2 ad concepts per channel (monthly)</td>
+          <td><span class="sla">7 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>Per active channel: Meta, Google, LinkedIn from Base.</td>
+        </tr>
+        <tr>
+          <td>Photoreal asset batch (30) <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">7 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>On-brand images via Photoreal AI. Used across paid and organic.</td>
+        </tr>
+        <tr>
+          <td>Photoreal hero film <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">15 days</span></td>
+          <td><span class="sla">5 days</span></td>
+          <td>30 to 60 seconds, multi-cut. Storyboard sign-off at day 5.</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">Nurture</th></tr>
+        <tr>
+          <td>Campaign EDM (retainer or add-on)</td>
+          <td><span class="sla">5 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>Copy, design, build, segmented send. Two included monthly.</td>
+        </tr>
+        <tr>
+          <td>Lifecycle automation (monthly)</td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>Welcome, post-purchase, re-engagement, or win-back.</td>
+        </tr>
+        <tr>
+          <td>Podcast episode <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>Full episode: recording, editing, show notes, distribution.</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">Website + Brand</th></tr>
+        <tr>
+          <td>Custom landing page <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">15 days</span></td>
+          <td><span class="sla">5 days</span></td>
+          <td>Standalone. Copy, design, dev, tracking.</td>
+        </tr>
+        <tr>
+          <td>Website refresh <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">30 days</span></td>
+          <td><span class="sla">10 days</span></td>
+          <td>Milestone-based. Design pass, copy refinement, CRO on key pages.</td>
+        </tr>
+        <tr>
+          <td>Brand kit <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">15 days</span></td>
+          <td><span class="sla">5 days</span></td>
+          <td>Logo files, colour, type, one-page guidelines, social templates.</td>
+        </tr>
+        <tr>
+          <td>Brand refresh <span style="color: var(--light);">· add-on</span></td>
+          <td><span class="sla">30 days</span></td>
+          <td><span class="sla">10 days</span></td>
+          <td>Direction, visual system update, application across surfaces.</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr><th colspan="4" class="lane-group" scope="rowgroup">AI Automation + Outreach</th></tr>
+        <tr>
+          <td>Workflow automation (build)</td>
+          <td><span class="sla">10 days</span></td>
+          <td><span class="sla">3 days</span></td>
+          <td>One per month inside the AI Automation lane. In n8n or Make.</td>
+        </tr>
+        <tr>
+          <td>Agent build (monthly)</td>
+          <td><span class="sla">15 days</span></td>
+          <td><span class="sla">5 days</span></td>
+          <td>One per month: triage, lead scoring, or content drafting.</td>
+        </tr>
+        <tr>
+          <td>200 outreach prospects (monthly)</td>
+          <td><span class="sla">5 days</span></td>
+          <td><span class="sla">2 days</span></td>
+          <td>List sourced, enriched, sequenced. ICP locked at onboarding.</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div class="timelines-callout">
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false" style="flex-shrink:0;margin-top:1px;"><path d="M8 1.5L9.85 5.27L14 5.88L11 8.81L11.71 12.94L8 10.99L4.29 12.94L5 8.81L2 5.88L6.15 5.27L8 1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/></svg>
+    <div><strong>Rush requests.</strong> Anything tighter than the windows above is a rush. Two options: a rush fee, quoted per request, or trade off another deliverable in the same month. Same-day work is reserved for live-incident response (paid ads down, site down, deliverability event). Volume requests, where multiple deliverables get compressed into one window, get scoped against this table and scheduled, not absorbed.</div>
+  </div>
+</section>
+
+<!-- TOOLING STACK -->
+<section id="tooling" aria-labelledby="tooling-title">
+  <div class="section-head">
+    <span class="section-label">Tooling</span>
+    <h2 class="section-title" id="tooling-title">The full stack, by lane.</h2>
+    <p class="section-sub">Primary tools are included in every active retainer. Optional tools layer in when the phase calls for them. Add-on tools are activated only when a client takes on the relevant add-on or upgrade.</p>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table class="tooling-table">
+      <caption class="sr-only">Tooling by lane. Primary tools are included in every active retainer. Optional tools layer in at later phases. Add-on tier tools require a separate add-on engagement.</caption>
+      <thead>
+        <tr>
+          <th style="width: 14%;" scope="col">Lane</th>
+          <th style="width: 38%;" scope="col">Primary</th>
+          <th style="width: 28%;" scope="col">Optional · Phase activated</th>
+          <th style="width: 20%;" scope="col">Add-on tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lane">Onboarding</td><td><span class="tool">Notion</span><span class="tool">GHL</span><span class="tool">WhatsApp</span></td><td><span aria-hidden="true">·</span><span class="sr-only">none</span></td><td><span aria-hidden="true">·</span><span class="sr-only">none</span></td></tr>
+        <tr><td class="lane">Brand</td><td><span class="tool">Figma</span></td><td><span aria-hidden="true">·</span><span class="sr-only">none</span></td><td><span class="tool tool--add">Brand portal</span></td></tr>
+        <tr><td class="lane">Website</td><td><span class="tool">Webflow / Replit</span><span class="tool">Microsoft Clarity</span></td><td><span class="tool tool--add">Hotjar (Base)</span><span class="tool tool--add">Mutiny (Expansion)</span></td><td><span class="tool tool--add">Shopify</span></td></tr>
+        <tr><td class="lane">SEO</td><td><span class="tool">Search Atlas</span><span class="tool">Agency Analytics</span></td><td><span aria-hidden="true">·</span><span class="sr-only">none</span></td><td><span class="tool tool--add">Ahrefs audit</span></td></tr>
+        <tr><td class="lane">Paid Ads</td><td><span class="tool">Meta</span><span class="tool">Google</span><span class="tool">Photoreal AI</span></td><td><span class="tool tool--add">LinkedIn (Base)</span><span class="tool tool--add">Pinterest (Expansion)</span><span class="tool tool--add">YouTube (Expansion)</span><span class="tool tool--add">TikTok (Expansion)</span></td><td><span class="tool tool--add">Triple Whale</span></td></tr>
+        <tr><td class="lane">Organic Social</td><td><span class="tool">Postiz</span><span class="tool">Photoreal AI</span></td><td><span class="tool tool--add">StoryChief (Expansion)</span></td><td><span class="tool tool--add">Influencer CRM</span></td></tr>
+        <tr><td class="lane">Outreach</td><td><span class="tool">Instantly</span><span class="tool">Manychat</span></td><td><span class="tool tool--add">Clay (Base)</span><span class="tool tool--add">Smartlead (Expansion)</span><span class="tool tool--add">Gong (Expansion)</span></td><td><span class="tool tool--add">Apollo</span></td></tr>
+        <tr><td class="lane">AI Automation</td><td><span class="tool">n8n</span><span class="tool">OpenAI</span><span class="tool">Anthropic</span></td><td><span class="tool tool--add">Make (Expansion)</span></td><td><span class="tool tool--add">Custom infra</span></td></tr>
+        <tr><td class="lane">Nurture</td><td><span class="tool">GHL</span></td><td><span aria-hidden="true">·</span><span class="sr-only">none</span></td><td><span class="tool tool--add">Klaviyo</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RETAINER PRICING -->
+<section id="retainer" aria-labelledby="retainer-title">
+  <div class="section-head">
+    <span class="section-label">Retainer pricing</span>
+    <h2 class="section-title" id="retainer-title">Three tiers. Pick your lanes.</h2>
+    <p class="section-sub">Pricing is by lane count, not by phase. Every retainer includes the full Onboarding stand-up (one-time), live Agency Analytics dashboard, weekly WhatsApp check-in, and a monthly marketing call. Phases (Foundation, Base, Expansion) describe maturity within each lane, not pricing tier.</p>
+  </div>
+
+  <div class="retainer">
+    <div class="retainer-cell">
+      <div class="retainer-head">
+        <span class="retainer-name">Essentials</span>
+        <span class="retainer-window">Two lanes</span>
+        <div class="retainer-price">$6,000<span>/mo</span></div>
+      </div>
+      <div class="retainer-coverage">Two active lanes plus universal foundations.</div>
+      <ul class="retainer-list">
+        <li>Choose any two lanes from the eight delivery lanes</li>
+        <li>Onboarding stood up in Weeks 0 to 4 (one-time, included)</li>
+        <li>Live Agency Analytics dashboard, 24/7 access</li>
+        <li>Weekly WhatsApp check-in, monthly 60 minute marketing call</li>
+        <li>Daily WhatsApp + email access to AM</li>
+        <li>Common picks: Paid Ads + Nurture · Website + SEO</li>
+      </ul>
+    </div>
+
+    <div class="retainer-cell featured">
+      <div class="retainer-head">
+        <span class="retainer-name">Growth</span>
+        <span class="retainer-window">Three lanes</span>
+        <div class="retainer-price">$8,000<span>/mo</span></div>
+      </div>
+      <div class="retainer-coverage">Three active lanes. Full top-of-funnel and conversion coverage.</div>
+      <ul class="retainer-list">
+        <li>Choose any three lanes from the eight delivery lanes</li>
+        <li>Onboarding stood up in Weeks 0 to 4 (one-time, included)</li>
+        <li>Live Agency Analytics dashboard, 24/7 access</li>
+        <li>Weekly WhatsApp check-in, monthly 60 minute marketing call</li>
+        <li>Daily WhatsApp + email access to AM</li>
+        <li>Common picks: Website + Paid Ads + Nurture · Brand + Organic Social + SEO</li>
+      </ul>
+    </div>
+
+    <div class="retainer-cell">
+      <div class="retainer-head">
+        <span class="retainer-name">Scale</span>
+        <span class="retainer-window">Four to five lanes</span>
+        <div class="retainer-price">$12,000<span>/mo</span></div>
+      </div>
+      <div class="retainer-coverage">Four to five lanes. Full-funnel coverage with compounding lanes wired in.</div>
+      <ul class="retainer-list">
+        <li>Choose any four to five lanes from the eight delivery lanes</li>
+        <li>Onboarding stood up in Weeks 0 to 4 (one-time, included)</li>
+        <li>Live Agency Analytics dashboard, 24/7 access</li>
+        <li>Weekly WhatsApp check-in, monthly 60 minute marketing call</li>
+        <li>Daily WhatsApp + email access to AM</li>
+        <li>Quarterly 90 minute strategic review with Strategist</li>
+        <li>Common pick: Website + SEO + Paid Ads + Organic Social + Nurture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section id="addons" aria-labelledby="addons-title">
+  <div class="section-head">
+    <span class="section-label">Add-ons</span>
+    <h2 class="section-title" id="addons-title">Outside the retainer. Quoted per scope.</h2>
+    <p class="section-sub">When a client needs more creative volume, more content, or a build outside their active lanes, it lives here. Pricing is fixed where shown and indicative where listed as "from". The most common add-on for retainer clients is extra creative.</p>
+  </div>
+
+  <div class="addons-note">
+    <strong>How add-ons work.</strong> Each add-on is scoped, quoted, and signed separately. Most add-ons run as a fixed-fee project alongside the retainer and do not pause monthly delivery. Account managers can stack add-ons onto any retainer tier.
+  </div>
+
+  <div class="addons-group-label">Extra creative + content volume</div>
+  <div class="addons-grid">
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Extra ad creative pack</div><div class="addon-price">$1,500</div></div>
+      <div class="addon-desc">Five additional creative concepts beyond the two per channel. Static, video, carousel. Built for Meta, Google, LinkedIn, or TikTok.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Extra reels / shorts</div><div class="addon-price">$1,500</div></div>
+      <div class="addon-desc">Ten short-form videos beyond the monthly three. Brand templates, captions, hooks. Ready to post on IG, TikTok, LinkedIn.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Extra EDM campaign</div><div class="addon-price">$500</div></div>
+      <div class="addon-desc">One additional campaign EDM beyond the monthly two. Copy, design, build, segmented send.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Long-form article</div><div class="addon-price">$750</div></div>
+      <div class="addon-desc">Single 2000 plus word cornerstone article beyond the monthly four. Researched, SEO-optimised, designed for ranking and authority.</div>
+    </div>
+  </div>
+
+  <div class="addons-group-label">Heavy production + assets</div>
+  <div class="addons-grid">
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Whitepaper or guide</div><div class="addon-price">$2,500</div></div>
+      <div class="addon-desc">Full-length lead magnet. Research, copy, design, gated landing page. Used for nurture and outreach.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Photoreal asset batch</div><div class="addon-price">$2,000</div></div>
+      <div class="addon-desc">Thirty on-brand photoreal images. Used for paid creative, organic content, EDM, or seasonal campaigns.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Photoreal hero film</div><div class="addon-price">$4,000</div></div>
+      <div class="addon-desc">30 to 60 second photoreal film. Multi-cut for paid, organic, EDM. Includes hooks and CTAs.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Podcast episode</div><div class="addon-price">$1,500</div></div>
+      <div class="addon-desc">Full podcast episode produced. Recording, editing, show notes, distribution to chosen platforms.</div>
+    </div>
+  </div>
+
+  <div class="addons-group-label">Brand + builds</div>
+  <div class="addons-grid">
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Brand kit</div><div class="addon-price">$1,500</div></div>
+      <div class="addon-desc">Working brand asset kit. Logo files in usable formats, colour palette, type system, one-page guidelines, four social templates. For clients without current brand documentation.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Brand refresh</div><div class="addon-price">$6,000</div></div>
+      <div class="addon-desc">Refine the existing brand. Direction tweaks, visual system update, applied to top-priority surfaces. Sits between Brand kit and a full rebuild.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Website refresh</div><div class="addon-price">$8,000</div></div>
+      <div class="addon-desc">Visual and copy refresh of the existing site. Design pass, copy refinement, CRO improvements on key pages. Not a full IA rebuild.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Custom landing page</div><div class="addon-price">$3,000</div></div>
+      <div class="addon-desc">Standalone conversion page. Copy, design, dev, tracking. Built on Webflow or Replit.</div>
+    </div>
+    <div class="addon">
+      <div class="addon-head"><div class="addon-name">Workflow automation</div><div class="addon-price">From $2,500</div></div>
+      <div class="addon-desc">Single end-to-end automation in n8n or Make. Scoped, built, tested, documented, handed over.</div>
+    </div>
+  </div>
+</section>
+
 <!-- PHASE GATES -->
-<section>
-  <span class="section-label">Phase gates</span>
-  <h2 class="section-title">Advance only when these are true.</h2>
-  <p class="section-sub">Reviewed in the monthly performance call. Signed off by Account Manager + Strategist before the client moves phases.</p>
+<section id="gates" aria-labelledby="gates-title">
+  <div class="section-head">
+    <span class="section-label">Phase gates</span>
+    <h2 class="section-title" id="gates-title">Advance only when these are true.</h2>
+    <p class="section-sub">Reviewed in the monthly marketing call. Signed off by Account Manager and Strategist before the client moves phases. Missing a gate keeps the client in the current phase. Phases apply per active lane, not across the whole retainer.</p>
+  </div>
 
   <div class="gates">
     <div class="gate-col">
-      <div class="gate-col-label">Foundation &rarr; Base</div>
+      <div class="gate-col-label">Foundation to Base</div>
       <ul>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Positioning and brand approved</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Website live and converting at baseline</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>First photoreal asset library shipped</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ten cornerstone content pieces live</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Welcome series live, list capture working</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Client OS, Brief OS, Report OS live in Notion</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Positioning and brand approved</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Website live and converting at baseline</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Twelve SEO articles live (cornerstone + supporting)</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Organic Social cadence held weekly</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Paid Ads CPL and ROAS baselines captured</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Welcome series live, list capture working</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Notion Dashboard and Brief established. Agency Analytics dashboard live.</li>
       </ul>
     </div>
 
     <div class="gate-col">
-      <div class="gate-col-label">Base &rarr; Expansion</div>
+      <div class="gate-col-label">Base to Expansion</div>
       <ul>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Meta and Google at target ROAS for 30+ days</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Content cadence held weekly for 60+ days</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Outreach reply rate above 8%</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>EDM driving 10%+ of pipeline</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Three case studies live</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Agency Analytics dashboards live for every active lane</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Meta and Google at target ROAS for 30 plus days</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>SEO traffic up month over month for 60 plus days</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Organic Social engagement above category benchmark</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Outreach reply rate above 8%</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Nurture driving 10% plus of pipeline</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Three case studies live</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cost per lead trending down month over month</li>
       </ul>
     </div>
 
     <div class="gate-col">
       <div class="gate-col-label">Expansion (compounding)</div>
       <ul>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-channel paid attributed and profitable</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Brand recognised in category</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Inbound increasing month over month</li>
-        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Every metric visible in Notion and Agency Analytics</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-channel paid attributed and profitable</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Brand recognised in category</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Inbound increasing month over month</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>LTV expanding through Nurture and win-back</li>
+        <li><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Every metric visible in Notion and Agency Analytics</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- RETAINER -->
-<section>
-  <span class="section-label">Retainer per phase</span>
-  <h2 class="section-title">Pricing climbs with capability.</h2>
+<!-- CADENCE + SLAs -->
+<section id="cadence" aria-labelledby="cadence-title">
+  <div class="section-head">
+    <span class="section-label">Cadence + SLAs</span>
+    <h2 class="section-title" id="cadence-title">How we work together.</h2>
+    <p class="section-sub">Daily WhatsApp and email. Weekly check-in. Monthly marketing call. Live Agency Analytics dashboard throughout. Quarterly strategic review on Scale tier. Predictable rhythm, predictable response.</p>
+  </div>
 
-  <div class="retainer">
-    <div class="retainer-cell">
-      <div class="retainer-head">
-        <div>
-          <span class="retainer-name">Foundation</span>
-          <span class="retainer-window">Months 0&ndash;3</span>
-        </div>
-        <div class="retainer-price">$6,000<span>/mo</span></div>
-      </div>
-      <div class="retainer-coverage">8 lanes building. Onboarding sets up substrate. Brand, Website, Production, Content, Lifecycle, SEO, Paid go live.</div>
+  <div class="cadence-grid">
+
+    <div class="cadence-card">
+      <h3>Contact rhythm</h3>
+      <ul class="cadence-list">
+        <li><span class="when">Daily</span><span class="what"><strong>WhatsApp + email</strong> · Account Manager available business hours · same-day response on questions asked before 3pm AWST</span></li>
+        <li><span class="when">Weekly</span><span class="what"><strong>Check-in</strong> · WhatsApp summary of what shipped, what's next, what's blocked</span></li>
+        <li><span class="when">Monthly</span><span class="what"><strong>Marketing call</strong> · 60 min · client and full team · metrics, lane health, decisions, next month's roadmap</span></li>
+        <li><span class="when">Quarterly</span><span class="what"><strong>Strategic review</strong> · 90 min · Scale tier · phase gate evaluation, retainer review, twelve-month roadmap</span></li>
+      </ul>
     </div>
-    <div class="retainer-cell">
-      <div class="retainer-head">
-        <div>
-          <span class="retainer-name">Base</span>
-          <span class="retainer-window">Months 3&ndash;6</span>
-        </div>
-        <div class="retainer-price">$8,000<span>/mo</span></div>
-      </div>
-      <div class="retainer-coverage">Outreach activates. LinkedIn joins paid. Clay enriches outreach. Agency Analytics wires reporting.</div>
+
+    <div class="cadence-card">
+      <h3>Reporting + delivery SLAs</h3>
+      <ul class="cadence-list">
+        <li><span class="when">Live</span><span class="what"><strong>Agency Analytics dashboard</strong> · 24/7 client access across every active lane · the single source of truth on performance</span></li>
+        <li><span class="when">Monthly</span><span class="what"><strong>Performance review</strong> · delivered at the marketing call · what's working, what needs to change, how to move the needle on the three numbers</span></li>
+        <li><span class="when">48 hours</span><span class="what"><strong>New asset requests</strong> · acknowledged, scoped, scheduled inside two business days</span></li>
+        <li><span class="when">5 days</span><span class="what"><strong>First draft</strong> · most lane deliverables move from request to first draft inside one week</span></li>
+      </ul>
     </div>
-    <div class="retainer-cell">
-      <div class="retainer-head">
-        <div>
-          <span class="retainer-name">Expansion</span>
-          <span class="retainer-window">Months 6&ndash;12</span>
-        </div>
-        <div class="retainer-price">$12,000<span>/mo</span></div>
+
+  </div>
+
+  <div class="metrics-row">
+    <div class="metrics-intro">
+      <span class="label">Performance metrics</span>
+      <span class="title">The three numbers we move every month.</span>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-eyebrow">Volume</div>
+        <div class="metric-name">Qualified leads</div>
+        <div class="metric-desc">Leads ready for the client to talk to. The headline number we grow each month across every active lane.</div>
       </div>
-      <div class="retainer-coverage">Multi-channel paid (Pinterest, YouTube, TikTok). Gong, Smartlead, StoryChief layer in.</div>
+      <div class="metric-card">
+        <div class="metric-eyebrow">Efficiency</div>
+        <div class="metric-name">Cost per lead</div>
+        <div class="metric-desc">What it costs to deliver each qualified lead. Total marketing spend divided by leads delivered.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-eyebrow">Quality</div>
+        <div class="metric-name">Lead-to-customer conversion</div>
+        <div class="metric-desc">How well leads convert into customers. Corient delivers the leads, the client closes the deal, and we work together on lifting the rate.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -753,8 +1743,8 @@
 </main>
 
 <footer class="footer">
-  <span>Internal SOP &middot; Corient delivery team</span>
-  <span>Edit at <code>~/.claude/results/corient/corient-os/corient-os.html</code></span>
+  <span>Servicing operating system <span aria-hidden="true">&middot;</span> Corient delivery team</span>
+  <span>Internal source controlled <span aria-hidden="true">&middot;</span> v3.6 <span aria-hidden="true">&middot;</span> 2026-05-22</span>
 </footer>
 
 </body>
